@@ -2,6 +2,10 @@ import asyncio
 import logging
 import os
 import sys
+
+from aiogram.fsm.storage.base import BaseStorage
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.fsm.storage.redis import RedisStorage
 from dotenv import load_dotenv
 
 from aiogram import Dispatcher, Bot
@@ -17,6 +21,7 @@ async def run_bot() -> None:
     commands_for_bot = [BotCommand(command=cmd[0], description=cmd[1]) for cmd in bot_commands]
     token = os.getenv("TOKEN")
     dp = Dispatcher()
+    # storage = RedisStorage(BaseStorage) if os.getenv("TOKEN") else MemoryStorage()
     bot = Bot(token, parse_mode=ParseMode.HTML)
     await bot.set_my_commands(commands=commands_for_bot)
     register_handlers(dp)
