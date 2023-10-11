@@ -1,8 +1,9 @@
 from aiogram import types
 
 from bot.keyboards.main_keyboards import main_menu
+from bot.keyboards.stocks_keyboards import stocks_keyboard
 from media_bot.stickers import sticker_start, sticker_help
-from media_bot.texts import text_user_start
+from media_bot.texts import text_user_start, text_stocks
 
 """Функция обработчик кнопки старт"""
 
@@ -33,8 +34,7 @@ async def user_help(message: types.Message):
 
 
 async def stocks(message: types.Message):
-    # await message.answer(text_stocks, reply_markup=stocks_keyboard)
-    pass
+    await message.answer(text_stocks, reply_markup=stocks_keyboard)
 
 
 """Обработчик кнопки ✅Записаться на прием"""

@@ -1,3 +1,8 @@
+from datetime import datetime
+
+new_date = datetime.now()
+now_date = new_date.strftime("%d.%m.%Y")
+
 # Кнопка старт
 text_user_start = (
     "Я бот стоматологической клиники DEMOCRAT (version 0.2)\n"
@@ -8,3 +13,6 @@ text_user_start = (
     "<i>- Вызвать такси до нашей клиники</i>\n"
     "<i>- Оставить отзыв о клинике и получить скидку</i>\n"
 )
+
+
+text_stocks = f"Список акций на {now_date}:\n"
