@@ -36,6 +36,7 @@ async def stocks(message: types.Message):
     # await message.answer(text_stocks, reply_markup=stocks_keyboard)
     pass
 
+
 """Обработчик кнопки ✅Записаться на прием"""
 
 

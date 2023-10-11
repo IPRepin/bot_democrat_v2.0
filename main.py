@@ -1,17 +1,5 @@
-import asyncio
-import logging
 import os
 import sys
-
-from dotenv import load_dotenv
-
-from aiogram import Dispatcher, Bot
-from aiogram.enums import ParseMode
-from aiogram.types import BotCommand
-
-from bot import register_handlers, bot_commands
-
-load_dotenv()
 
 
 async def run_bot() -> None:
@@ -25,5 +13,26 @@ async def run_bot() -> None:
 
 
 if __name__ == '__main__':
+    import django
+
+    os.environ.setdefault(
+        "DJANGO_SETTINGS_MODULE",
+        "admin_bot_django.admin_bot_django.settings"
+    )
+    os.environ.update({'DJANGO_ALLOW_ASYNC_UNSAFE': "true"})
+    django.setup()
+    import asyncio
+
+    from aiogram import Dispatcher, Bot
+    from aiogram.enums import ParseMode
+    from aiogram.types import BotCommand
+
+    import logging
+
+    from dotenv import load_dotenv
+
+    from bot import register_handlers, bot_commands
+
+    load_dotenv()
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(run_bot())
