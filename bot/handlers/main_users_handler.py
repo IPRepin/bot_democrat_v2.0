@@ -1,9 +1,16 @@
 from aiogram import types
 
 from bot.keyboards.main_keyboards import main_menu
+from bot.keyboards.online_entries_keyboard import online_entries_keyboard
+from bot.keyboards.review_clinic_keyboard import review_clinic_keyboard
 from bot.keyboards.stocks_keyboards import stocks_keyboard
+from bot.keyboards.taxi_keyboard_main import taxi_keyboard
 from media_bot.stickers import sticker_start, sticker_help
-from media_bot.texts import text_user_start, text_stocks
+from media_bot.texts import (text_user_start,
+                             text_stocks,
+                             text_recording,
+                             text_taxi,
+                             text_discount)
 
 """Функция обработчик кнопки старт"""
 
@@ -41,11 +48,10 @@ async def stocks(message: types.Message):
 
 
 async def recording(message: types.Message):
-    # await message.answer(
-    #     f"{message.from_user.first_name}\n" f"{text_recording}",
-    #     reply_markup=online_entries_keyboard,
-    # )
-    pass
+    await message.answer(
+        f"{message.from_user.first_name}\n" f"{text_recording}",
+        reply_markup=online_entries_keyboard,
+    )
 
 
 """Обработчик кнопки Мои записи"""
@@ -68,18 +74,16 @@ async def story_recording(message: types.Message):
 
 
 async def taxi(message: types.Message):
-    # await message.answer(
-    #     f"{message.from_user.first_name}\n" f"{text_taxi}", reply_markup=taxi_keyboard
-    # )
-    pass
+    await message.answer(
+        f"{message.from_user.first_name}\n" f"{text_taxi}", reply_markup=taxi_keyboard
+    )
 
 
 """Обработчик кнопки 🤩Скидка 5️% за отзыв о клинике"""
 
 
 async def review_clinic(message: types.Message):
-    # await message.answer(
-    #     f"{message.from_user.first_name}\n" f"{text_discount}",
-    #     reply_markup=review_clinic_keyboard,
-    # )
-    pass
+    await message.answer(
+        f"{message.from_user.first_name}\n" f"{text_discount}",
+        reply_markup=review_clinic_keyboard,
+    )

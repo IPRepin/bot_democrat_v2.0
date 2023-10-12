@@ -21,6 +21,7 @@ if __name__ == '__main__':
     )
     os.environ.update({'DJANGO_ALLOW_ASYNC_UNSAFE': "true"})
     django.setup()
+
     import asyncio
 
     from aiogram import Dispatcher, Bot
