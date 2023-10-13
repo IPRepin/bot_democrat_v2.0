@@ -1,7 +1,7 @@
 """
 Клавиатура для написания отзыва о клинике
 """
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
+from aiogram.utils.keyboard import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 
 review_clinic_keyboard = InlineKeyboardMarkup(

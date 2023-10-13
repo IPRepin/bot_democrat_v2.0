@@ -1,7 +1,7 @@
 """
 Клавиатура списка акций
 """
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.utils.keyboard import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.types.web_app_info import WebAppInfo
 
 stocks_keyboard = InlineKeyboardMarkup(

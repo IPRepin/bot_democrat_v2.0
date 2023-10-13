@@ -1,4 +1,5 @@
 from aiogram import types
+from aiogram.types import ReplyKeyboardRemove
 
 from bot.keyboards.main_keyboards import main_menu
 from bot.keyboards.online_entries_keyboard import online_entries_keyboard
@@ -11,16 +12,23 @@ from media_bot.texts import (text_user_start,
                              text_recording,
                              text_taxi,
                              text_discount)
+from bot.models.db_commands import add_user, select_patient
 
 """Функция обработчик кнопки старт"""
 
 
 async def user_start(message: types.Message) -> None:
+    await add_user(
+        user_id=message.from_user.id,
+        full_name=message.from_user.full_name,
+        username=message.from_user.username,
+        url=message.from_user.url,
+    )
     sticker_id = sticker_start
     await message.answer_sticker(sticker=sticker_id)
     await message.answer(
         f"Привет {message.from_user.first_name}," f" {text_user_start}",
-        reply_markup=main_menu.as_markup(resize_keyboard=True),
+        reply_markup=main_menu,
     )
 
 
@@ -32,7 +40,7 @@ async def user_help(message: types.Message):
     await message.answer_sticker(sticker=sticker_id)
     await message.answer(
         f"Привет {message.from_user.first_name}," f" {text_user_start}",
-        reply_markup=main_menu.as_markup(resize_keyboard=True),
+        reply_markup=main_menu,
     )
 
 

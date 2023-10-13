@@ -2,11 +2,9 @@
 Клавиатура записи пользователя
 """
 
-from aiogram.types import (
+from aiogram.utils.keyboard import (
     InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    ReplyKeyboardMarkup,
-    KeyboardButton,
+    InlineKeyboardMarkup
 )
 
 online_entries_keyboard = InlineKeyboardMarkup(
@@ -20,16 +18,4 @@ online_entries_keyboard = InlineKeyboardMarkup(
         ],
         [InlineKeyboardButton(text="↩️На главное меню", callback_data="cancel")],
     ]
-)
-
-add_number = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="📱Поделится номером", request_contact=True)],
-        [
-            KeyboardButton(
-                text="↩️На главное меню",
-            )
-        ],
-    ],
-    resize_keyboard=True,
 )

@@ -1,7 +1,6 @@
 """
 Функции обработки кнопок списка акций
 """
-import logging
 
 from aiogram import types
 

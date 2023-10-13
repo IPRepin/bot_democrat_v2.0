@@ -1,7 +1,7 @@
 """
 Клавиатура вызова такси
 """
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
+from aiogram.utils.keyboard import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 taxi_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[

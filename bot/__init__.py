@@ -10,7 +10,7 @@ from bot.handlers.main_users_handler import (user_start,
                                              story_recording,
                                              taxi,
                                              review_clinic)
-from bot.handlers.stocks_handler import osstem_btn, hygiene_btn, brecket_btn
+from bot.handlers.stocks_handler import osstem_btn, hygiene_btn, brecket_btn, cancel_btn
 
 bot_commands = (
     ("start", "Запуск бота", "Начало работа с ботом"),
@@ -29,3 +29,4 @@ def register_handlers(router: Router) -> None:
     router.callback_query.register(osstem_btn, F.data == "osstem")
     router.callback_query.register(hygiene_btn, F.data == "hygiene")
     router.callback_query.register(brecket_btn, F.data == "brecket")
+    router.callback_query.register(cancel_btn, F.data == "cancel")
