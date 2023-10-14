@@ -10,7 +10,9 @@ from bot.handlers.main_users_handler import (user_start,
                                              story_recording,
                                              taxi,
                                              review_clinic)
+from bot.handlers.states_recording_handler import enter_name, enter_phone, end_enter
 from bot.handlers.stocks_handler import osstem_btn, hygiene_btn, brecket_btn, cancel_btn
+from bot.misc.states_online_recording import OnlineRecording
 
 bot_commands = (
     ("start", "Запуск бота", "Начало работа с ботом"),
@@ -30,3 +32,7 @@ def register_handlers(router: Router) -> None:
     router.callback_query.register(hygiene_btn, F.data == "hygiene")
     router.callback_query.register(brecket_btn, F.data == "brecket")
     router.callback_query.register(cancel_btn, F.data == "cancel")
+    router.callback_query.register(
+        enter_name, F.data == "rec_online")
+    router.message.register(enter_phone, OnlineRecording.NAME)
+    router.message.register(end_enter, OnlineRecording.PHONE)

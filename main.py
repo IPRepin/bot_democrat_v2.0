@@ -1,11 +1,14 @@
 import os
 import sys
 
+from aiogram.fsm.storage.memory import MemoryStorage
+
 
 async def run_bot() -> None:
     commands_for_bot = [BotCommand(command=cmd[0], description=cmd[1]) for cmd in bot_commands]
+    storage = MemoryStorage()
     token = os.getenv("TOKEN")
-    dp = Dispatcher()
+    dp = Dispatcher(storage=storage)
     bot = Bot(token, parse_mode=ParseMode.HTML)
     await bot.set_my_commands(commands=commands_for_bot)
     register_handlers(dp)

@@ -1,6 +1,7 @@
-# Телеграм бот для стоматологической клиники DEMOCRAT Нижний Новгород (v 0.1)
+# Телеграм бот для стоматологической клиники DEMOCRAT Нижний Новгород (v 2.0)
 
-Информационно-рекламный телеграм бот для стоматологической клиники.
+Информационно-рекламный телеграм бот для стоматологической клиники. Бот переписан под версию Aiogram 3.1.1,
+ вместо SQLite используется PostgreSQL.
 
 ## Поддерживаемые функции
 
@@ -26,12 +27,12 @@
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
-Основной стек: Python 3.11, Django 4.2, Aiogram 2.25.1, amocrm-api 2.6.1
+Основной стек: Python 3.11, Django 4.2, Aiogram 3.1.1, amocrm-api 2.6.1
 
 ### Инструкция по запуску
 1. Клонировать копию проекта на локальный компьютер командой
 ```
-git clone --branch=release https://github.com/IPRepin/Bot_demokrat.git
+git clone --branch=master https://github.com/IPRepin/bot_democrat_v2.0.git
 ```
 2. В используемой вами IDE в корне проекта создаем виртуальную среду командой
 ```
@@ -63,7 +64,7 @@ python3 app_django.py runserver
 ```
 7. Для начала работы бота запускаем файл bot.py
 ```
-python3 bot.py
+python3 main.py
 ```
 ### Интеграция бота с АМО CRM
 
