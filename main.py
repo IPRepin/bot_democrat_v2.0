@@ -2,11 +2,14 @@ import os
 import sys
 
 from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.fsm.storage.redis import RedisStorage
+from redis.asyncio import Redis
 
 
 async def run_bot() -> None:
     commands_for_bot = [BotCommand(command=cmd[0], description=cmd[1]) for cmd in bot_commands]
-    storage = MemoryStorage()
+    redis = Redis()
+    storage = RedisStorage(redis=redis) if os.getenv("USE_REDIS") == True else MemoryStorage()
     token = os.getenv("TOKEN")
     dp = Dispatcher(storage=storage)
     bot = Bot(token, parse_mode=ParseMode.HTML)

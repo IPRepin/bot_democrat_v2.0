@@ -15,7 +15,7 @@ from bot.models.db_commands import add_patient
 from media_bot.texts import waiting_text
 
 
-async def enter_name(call: types.CallbackQuery, state: FSMContext):
+async def enter_name(call: types.CallbackQuery, state: FSMContext) -> None:
     """
     Функция получения имени
     пользователя в АМО
@@ -28,7 +28,7 @@ async def enter_name(call: types.CallbackQuery, state: FSMContext):
         await state.clear()
 
 
-async def enter_phone(message: types.Message, state: FSMContext):
+async def enter_phone(message: types.Message, state: FSMContext) -> None:
     """
     Функция получения номера телефона
     пользователя в АМО
@@ -42,7 +42,7 @@ async def enter_phone(message: types.Message, state: FSMContext):
         await state.clear()
 
 
-async def end_enter(message: types.Message, state: FSMContext):
+async def end_enter(message: types.Message, state: FSMContext) -> None:
     """
     Функция получения передачи данных
     пользователя в АМО

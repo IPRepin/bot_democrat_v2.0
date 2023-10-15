@@ -11,7 +11,7 @@ from bot.keyboards.stocks_keyboards import (osstem_keyboard,
 from bot.models.db_commands import select_stock
 
 
-async def osstem_btn(call: types.CallbackQuery):
+async def osstem_btn(call: types.CallbackQuery) -> None:
     await call.answer(cache_time=60)
     stock = await select_stock(1)
     await call.message.answer_photo(
@@ -21,7 +21,7 @@ async def osstem_btn(call: types.CallbackQuery):
     )
 
 
-async def hygiene_btn(call: types.CallbackQuery):
+async def hygiene_btn(call: types.CallbackQuery) -> None:
     await call.answer(cache_time=60)
     stock = await select_stock(2)
     await call.message.answer_photo(
@@ -31,7 +31,7 @@ async def hygiene_btn(call: types.CallbackQuery):
     )
 
 
-async def brecket_btn(call: types.CallbackQuery):
+async def brecket_btn(call: types.CallbackQuery) -> None:
     await call.answer(cache_time=60)
     stock = await select_stock(3)
     await call.message.answer_photo(
@@ -41,6 +41,6 @@ async def brecket_btn(call: types.CallbackQuery):
     )
 
 
-async def cancel_btn(call: types.CallbackQuery):
+async def cancel_btn(call: types.CallbackQuery) -> None:
     await call.answer(cache_time=60)
     await call.message.answer("Главное меню: ", reply_markup=main_menu)

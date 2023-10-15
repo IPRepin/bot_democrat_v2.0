@@ -1,0 +1,34 @@
+name: Деплой
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  bot_deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Проверка репозитория на наличие изменений
+        uses: actions/checkout@v3
+
+      - name: Установка python и окружения
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11'
+
+      - name: Установка зависимостей
+        run: pip install -r requirements.txt
+
+#      - name: Тестирование
+#        run: pytest
+
+      - name: Линтинг
+        run: flake8
+
+      - name: Деплой
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_NAME }}
+          username: ${{ secrets.HOST_USER }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          script: expect /home/admin_nn/Bot_domocrat/deploy_pass.exp

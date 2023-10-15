@@ -3,7 +3,6 @@
 """
 from aiogram.utils.keyboard import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
-
 review_clinic_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
