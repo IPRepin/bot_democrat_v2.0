@@ -1,0 +1,82 @@
+version: '3.9'
+
+services:
+# Подключить редис
+  redis:
+    image: 'redis:alpine'
+    networks:
+      - botnet
+
+# Подключить базу данных
+  postgres:
+    container_name: postgres_db
+    image: sameersbn/postgresql:latest
+    env_file:
+      - ".env"
+    environment:
+      POSTGRES_DB: $DB_NAME
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+    restart: always
+    ports:
+      - 5555:5432
+    networks:
+      - botnet
+    volumes:
+      - ./postgresql:/var/lib/postgresql
+
+
+  tgbot:
+    container_name: bot
+    build:
+      context: .
+    command: python bot.py
+    volumes:
+      - .:/src
+    networks:
+      - botnet
+    restart: always
+    env_file:
+      - ".env"
+
+
+
+  web:
+    build: ./nginx
+    container_name: web_nginx
+    volumes:
+      - static:/src/bot_democrat_v2.0/admin_bot_django
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=194.58.109.235
+      - NGINX_PORT=80
+    depends_on:
+      - postgres
+    networks:
+      - botnet
+
+
+  django:
+    container_name: admin_bot_django
+    build:
+      context: .
+    command: sh start_django.sh
+    ports:
+      - 8000:8000
+    networks:
+      - botnet
+    restart: always
+    volumes:
+      - .:/src
+    env_file:
+      - ".env"
+    depends_on:
+      - postgres
+
+
+# указываются используемые сети
+networks:
+  botnet:
+    # указывается драйвер сети
+    driver: bridge

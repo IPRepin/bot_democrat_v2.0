@@ -7,6 +7,20 @@ on:
 jobs:
   bot_deploy:
     runs-on: ubuntu-22.04
+    services:
+      postgresql_main:
+        image: postgres:16
+        env:
+          POSTGRES_DB: ${{ secrets.DB_NAME }}
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        ports:
+          5432:5432
+        options:
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Проверка репозитория на наличие изменений
         uses: actions/checkout@v3
@@ -31,4 +45,4 @@ jobs:
           host: ${{ secrets.HOST_NAME }}
           username: ${{ secrets.HOST_USER }}
           password: ${{ secrets.HOST_PASSWORD }}
-          script: expect /home/admin_nn/Bot_domocrat/deploy_pass.exp
+          script: expect /home/admin_nn/bot_democrat_v2.0/deploy_pass.exp
