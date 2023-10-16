@@ -3,3 +3,7 @@
 venv
 **/__pycache__
 
+!/amo_integration/access_token.txt
+!/amo_integration/refresh_token.txt
+!/access_token.txt
+!/refresh_token.txt
