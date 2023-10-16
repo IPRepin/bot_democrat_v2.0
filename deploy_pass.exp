@@ -1,0 +1,5 @@
+#!/bin/bash/expect
+spawn /home/admin_nn/bot_democrat_v2.0/deploy.sh
+expect "password"
+send -- "democrat\r"
+expect eof
