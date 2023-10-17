@@ -41,20 +41,20 @@ services:
 
 
 
-  web:
-    build: ./nginx
-    container_name: web_nginx
-    volumes:
-      - static:/src/bot_democrat_v2.0/admin_bot_django
-    ports:
-      - "80:80"
-    environment:
-      - NGINX_HOST=194.58.109.235
-      - NGINX_PORT=80
-    depends_on:
-      - postgres
-    networks:
-      - botnet
+#  web:
+#    build: ./nginx
+#    container_name: web_nginx
+#    volumes:
+#      - static:/src/bot_democrat_v2.0/admin_bot_django
+#    ports:
+#      - "80:80"
+#    environment:
+#      - NGINX_HOST=194.58.109.235
+#      - NGINX_PORT=80
+#    depends_on:
+#      - postgres
+#    networks:
+#      - botnet
 
 
   django:
