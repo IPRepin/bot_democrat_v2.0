@@ -7,7 +7,9 @@ from redis.asyncio import Redis
 
 async def run_bot() -> None:
     commands_for_bot = [BotCommand(command=cmd[0], description=cmd[1]) for cmd in bot_commands]
-    redis = Redis()
+    host_redis = os.getenv("HOST_REDIS")
+    port_redis = int(os.getenv("REDIS_PORT"))
+    redis = Redis(host=host_redis, port=port_redis)
     storage = RedisStorage(redis=redis)
     token = os.getenv("TOKEN")
     dp = Dispatcher(storage=storage)
