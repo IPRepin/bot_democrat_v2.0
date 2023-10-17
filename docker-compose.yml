@@ -30,7 +30,7 @@ services:
     container_name: bot
     build:
       context: .
-    command: python bot.py
+    command: python main.py
     volumes:
       - .:/src
     networks:
