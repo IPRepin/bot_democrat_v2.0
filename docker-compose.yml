@@ -20,10 +20,18 @@ services:
     restart: always
     ports:
       - "5555:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U democrat -d new_db_democrat" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     networks:
       - botnet
     volumes:
-      - ./postgresql:/var/lib/postgresql
+      - ./logs:/var/log
+      - pgdata:/var/lib/postgresql/data
+      - .:/docker-entrypoint-initdb.d
 
 
   tgbot:
