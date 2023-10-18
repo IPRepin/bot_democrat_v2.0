@@ -75,8 +75,8 @@ services:
     ports:
       - 8000:8000
     network_mode: host
-    networks:
-      - botnet
+#    networks:
+#      - botnet
     restart: always
     volumes:
       - .:/src
