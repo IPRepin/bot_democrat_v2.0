@@ -74,6 +74,7 @@ services:
     command: sh start_django.sh
     ports:
       - 8000:8000
+    network_mode: host
     networks:
       - botnet
     restart: always
