@@ -1,6 +1,6 @@
 version: '3.9'
-volumes:
-  pgdata:
+#volumes:
+#  pgdata:
 
 services:
 # Подключить редис
@@ -16,8 +16,8 @@ services:
     env_file:
       - ".env"
     environment:
-      POSTGRES_DB: $DB_NAME
-      POSTGRES_USER: $DB_USER
+#      POSTGRES_DB: $DB_NAME
+#      POSTGRES_USER: $DB_USER
       POSTGRES_PASSWORD: $DB_PASS
     restart: always
     ports:
@@ -31,9 +31,10 @@ services:
     networks:
       - botnet
     volumes:
-      - ./logs:/var/log
-      - pgdata:/var/lib/postgresql/data
-      - .:/docker-entrypoint-initdb.d
+#      - ./logs:/var/log
+#      - pgdata:/var/lib/postgresql/data
+#      - .:/docker-entrypoint-initdb.d
+      - ./postgresql:/var/lib/postgresql
 
 
   tgbot:
