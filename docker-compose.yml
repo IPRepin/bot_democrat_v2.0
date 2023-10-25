@@ -73,14 +73,14 @@ services:
       context: .
     command: sh start_django.sh
     ports:
-      - 8000:8000
-    networks:
-      - botnet
+      - "8000:8000"
     restart: always
     volumes:
       - .:/src
     env_file:
       - ".env"
+    networks:
+      - botnet
     depends_on:
       - postgres
 
