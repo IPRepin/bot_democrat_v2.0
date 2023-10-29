@@ -54,7 +54,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "admin_bot_django.admin_bot_django.urls"
+ROOT_URLCONF = "admin_bot_django.urls"
 
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "admin_bot_django.admin_bot_django.wsgi.application"
+WSGI_APPLICATION = "admin_bot_django.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
