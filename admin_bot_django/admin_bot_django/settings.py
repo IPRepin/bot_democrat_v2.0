@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "admin_bot_django.admin_bot",
+    "admin_bot",
 ]
 
 MIDDLEWARE = [
